@@ -27,13 +27,13 @@ pipeline {
                     sh '''
                         DDL_FOLDER=/Workspace/Shared/DDL
                         echo $FOLDER
-                        databricks workspace import_dir /DDL $DDL_FOLDER --exclude-hidden-files --overwrite
+                        /var/lib/jenkins/.local/bin/databricks workspace import_dir /DDL $DDL_FOLDER --exclude-hidden-files --overwrite
                     '''
                 // DML deployment
                     sh '''
                         DML_FOLDER=/Workspace/Shared/DML
                         echo $FOLDER
-                        databricks workspace import_dir /DML $DML_FOLDER --exclude-hidden-files --overwrite
+                        /var/lib/jenkins/.local/bin/databricks workspace import_dir /DML $DML_FOLDER --exclude-hidden-files --overwrite
                     '''
             }
         }
