@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout source code from your version control system
-                git ''
+                git 'https://github.com/ankit835/adb-cicd.git'
             }
         }
         stage('Build') {
