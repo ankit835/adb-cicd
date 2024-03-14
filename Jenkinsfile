@@ -20,10 +20,8 @@ pipeline {
                 branch 'main'
             }
             steps {
-                scripts{
                     sh 'pip install databricks-cli'
-                    sh "echo '${databricksHost}\n${databricksToken}' | databricks configure --token"
-                }
+                    sh "echo '${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' | databricks configure --token"
 
                 // DDL deployment
                     sh '''
