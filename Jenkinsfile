@@ -18,10 +18,6 @@ pipeline {
             }
         }
         stage('deploy') {
-             when {
-                // Define conditions for deployment, e.g., branch name
-                "branch 'dev'"
-            }
             steps {
                     sh 'pip install databricks-cli'
 
