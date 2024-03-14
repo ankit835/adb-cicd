@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
                     sh 'pip install databricks-cli'
-                    sh '/var/lib/jenkins/.local/bin/databricks configure --token'
+                    sh "echo '${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' | databricks configure --token"
 
                 // DDL deployment
                     sh '''
