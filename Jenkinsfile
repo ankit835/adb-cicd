@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment{ 
+                DATABRICKS_TOKEN= credentials('adb-token')
+            }
     
     stages {
         stage('Checkout') {
@@ -15,9 +18,6 @@ pipeline {
             steps {
                 // build commands 
                 echo 'Building...'
-                environment{ 
-                    DATABRICKS_TOKEN= credentials('adb-token')
-            }
             }
         }
         stage('deploy') {
