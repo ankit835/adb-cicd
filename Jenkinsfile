@@ -13,8 +13,16 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Execute build commands (e.g., dotnet build, npm run build)
+                // Execute build commands
                 echo 'Building...' // Example for Node.js project
+                sh 'pip install databricks-cli'
+
+                // Configure databricks
+                    sh '''
+                        set +x
+                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  /var/lib/jenkins/.local/bin/databricks configure --token"
+                        set -x
+                    ''' 
             }
         }
         stage('deploy') {
@@ -51,7 +59,7 @@ pipeline {
     // Optionally, you can define post-build actions
     // post {
     //     always {
-    //         // Clean up or perform any post-build tasks
+    //         echo "deployment completed..!!"
     //     }
     // }
     // +refs/heads/*:refs/remotes/origin/*
