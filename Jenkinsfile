@@ -15,6 +15,9 @@ pipeline {
             steps {
                 // build commands 
                 echo 'Building...'
+                environment{ 
+                    DATABRICKS_TOKEN= credentials('adb-token')
+            }
             }
         }
         stage('deploy') {
