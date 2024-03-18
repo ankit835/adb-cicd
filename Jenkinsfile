@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Execute build commands
-                echo 'Building...' // Example for Node.js project
+                echo 'Building & installing databricks' // Example for Node.js project
                 // withEnv(['ADB_HOME=/var/lib/jenkins/.local/bin'])
                 sh 'pip install databricks-cli'
 
@@ -32,15 +32,7 @@ pipeline {
                 // Define conditions for deployment, e.g., branch name
                 branch 'main'
             }
-            steps {
-                    sh 'pip install databricks-cli'
-
-                // Configure databricks
-                    sh '''
-                        set +x
-                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  ${ADB_HOME}/databricks configure --token"
-                        set -x
-                    '''    
+            steps {    
 
                 // DDL deployment
                     sh '''
