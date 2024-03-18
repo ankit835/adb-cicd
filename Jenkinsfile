@@ -1,8 +1,7 @@
 pipeline {
     agent any
-
-     environment{ 
-             DATABRICKS_TOKEN= credentials('adb-token')
+    environment{ 
+            DATABRICKS_TOKEN= credentials('adb-token')
             }
     
     stages {
@@ -16,6 +15,7 @@ pipeline {
             steps {
                 // Execute build commands (e.g., dotnet build, npm run build)
                 echo 'Building...' // Example for Node.js project
+            }
         }
         stage('deploy') {
              when {
@@ -54,5 +54,5 @@ pipeline {
     //         // Clean up or perform any post-build tasks
     //     }
     // }
-} 
+    // +refs/heads/*:refs/remotes/origin/*
 }
