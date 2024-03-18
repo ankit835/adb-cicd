@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+     environment{ 
+             DATABRICKS_TOKEN= credentials('adb-token')
+            }
     
     stages {
         stage('Checkout') {
@@ -12,9 +16,6 @@ pipeline {
             steps {
                 // Execute build commands (e.g., dotnet build, npm run build)
                 echo 'Building...' // Example for Node.js project
-                environment{ 
-                    DATABRICKS_TOKEN= credentials('adb-token')
-            }
         }
         stage('deploy') {
              when {
