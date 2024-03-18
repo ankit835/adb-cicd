@@ -16,3 +16,6 @@
 # MAGIC %sql
 # MAGIC select * from stock_list
 
+# MAGIC %sql
+# MAGIC select * from added_env
+
