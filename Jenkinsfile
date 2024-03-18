@@ -16,7 +16,6 @@ pipeline {
             steps {
                 // Execute build commands
                 echo 'Building...' // Example for Node.js project
-                echo ${env.ADB_HOME}
                 // withEnv(['ADB_HOME=/var/lib/jenkins/.local/bin'])
                 sh 'pip install databricks-cli'
 
