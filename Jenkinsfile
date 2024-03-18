@@ -15,13 +15,14 @@ pipeline {
             steps {
                 // Execute build commands
                 echo 'Building...' // Example for Node.js project
+                withEnv(['ADB_HOME=ADB_HOME'])
                 sh 'pip install databricks-cli'
 
                 // Configure databricks
                     sh '''
-                        set +x
-                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  /var/lib/jenkins/.local/bin/databricks configure --token"
-                        set -x
+                        
+                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  ADB_HOME/databricks configure --token"
+                        
                     ''' 
             }
         }
@@ -36,7 +37,7 @@ pipeline {
                 // Configure databricks
                     sh '''
                         set +x
-                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  /var/lib/jenkins/.local/bin/databricks configure --token"
+                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  ADB_HOME/databricks configure --token"
                         set -x
                     '''    
 
@@ -44,13 +45,13 @@ pipeline {
                     sh '''
                         DDL_FOLDER=/Workspace/Shared/DDL
                         echo $DDL_FOLDER
-                        /var/lib/jenkins/.local/bin/databricks workspace import_dir DDL $DDL_FOLDER --exclude-hidden-files --overwrite
+                        ADB_HOME/databricks workspace import_dir DDL $DDL_FOLDER --exclude-hidden-files --overwrite
                     '''
                 // DML deployment
                     sh '''
                         DML_FOLDER=/Workspace/Shared/DML
                         echo $DML_FOLDER
-                        /var/lib/jenkins/.local/bin/databricks workspace import_dir DML $DML_FOLDER --exclude-hidden-files --overwrite
+                        ADB_HOME/databricks workspace import_dir DML $DML_FOLDER --exclude-hidden-files --overwrite
                     '''
             }
         }
