@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment{ 
             DATABRICKS_TOKEN= credentials('adb-token')
+            ADB_HOME=/var/lib/jenkins/.local/bin
             }
     
     stages {
@@ -15,7 +16,7 @@ pipeline {
             steps {
                 // Execute build commands
                 echo 'Building...' // Example for Node.js project
-                withEnv(['ADB_HOME=/var/lib/jenkins/.local/bin'])
+                // withEnv(['ADB_HOME=/var/lib/jenkins/.local/bin'])
                 sh 'pip install databricks-cli'
 
                 // Configure databricks
