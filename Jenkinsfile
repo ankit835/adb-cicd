@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{ 
             DATABRICKS_TOKEN= credentials('adb-token')
-            ADB_HOME=/var/lib/jenkins/.local/bin
+            ADB_HOME="/var/lib/jenkins/.local/bin"
             }
     
     stages {
