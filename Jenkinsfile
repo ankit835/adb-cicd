@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
 
-                echo "Installing databricks'
+                echo "Installing databricks"
                 sh 'pip install databricks-cli'
 
                 // Configure databricks
