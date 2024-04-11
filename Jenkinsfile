@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout source code from your version control system
-                git branch: 'main', url: 'https://github.com/ankit835/adb-cicd.git'
+                git branch: 'prod', url: 'https://github.com/ankit835/adb-cicd.git'
             }
         }
         stage('Build') {
