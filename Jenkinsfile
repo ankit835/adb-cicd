@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment{ 
-            DATABRICKS_TOKEN= credentials('adb-token')
             ADB_HOME="/var/lib/jenkins/.local/bin"
             }
     
@@ -18,12 +17,14 @@ pipeline {
                 echo "Installing databricks"
                 sh 'pip install databricks-cli'
 
-                // Configure databricks
+                withCredentials([string(credentialsId: 'adb-token1', variable: 'DATABRICKS_TOKEN')]) {
+                                    // Configure databricks
                     sh '''
                         
                         echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  ${ADB_HOME}/databricks configure --token"
                         
-                    ''' 
+                    '''
+                } 
             }
         }
         stage('deploy') {
