@@ -42,7 +42,7 @@ pipeline {
                     '''
                 // DML deployment
                     sh '''
-                        DML_FOLDER=/Workspace/Shared/DML
+                        DML_FOLDER=/Workspace/Users/ankit.singh01@tigeranalytics.com/
                         echo $DML_FOLDER
                         ${ADB_HOME}/databricks workspace import_dir DML $DML_FOLDER --exclude-hidden-files --overwrite
                     '''
