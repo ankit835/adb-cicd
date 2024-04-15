@@ -7,7 +7,7 @@ RUN yum update -y
 RUN yum clean all
 
 RUN yum install -y python3 
-RUN yum -y install epel-release && yum clean all
+RUN yum -y --enablerepo=extras install epel-release && yum clean all
 RUN dnf -y install python-pip  
 RUN yum install git -y
 RUN yum update -y
