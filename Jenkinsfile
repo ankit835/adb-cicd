@@ -1,8 +1,5 @@
 pipeline {
-    agent dockerfile {
-      filename 'Dockerfile'
-      label 'slave_node'
-    }
+agent { dockerfile true }
     environment{ 
             DATABRICKS_TOKEN= credentials('adb-token1')
             ADB_HOME="/var/lib/jenkins/.local/bin"
