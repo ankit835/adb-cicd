@@ -8,6 +8,6 @@ RUN yum clean all
 
 RUN yum install -y python3 
 RUN yum -y install epel-release && yum clean all
-RUN yum -y install python-pip && yum clean all  
+RUN dnf -y install python3-pip  
 RUN yum install git -y
 RUN yum update -y
