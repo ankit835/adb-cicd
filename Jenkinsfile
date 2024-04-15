@@ -65,6 +65,6 @@ agent { dockerfile true }
         always {
             echo "deployment completed..!!"
         }
-    }
+    }}
     +refs/heads/*:refs/remotes/origin/*
-}
+
