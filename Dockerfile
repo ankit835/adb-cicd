@@ -1,10 +1,10 @@
-FROM ubuntu:latest
+FROM centos:latest
 
-RUN apt-get update
-RUN apt-get clean
+RUN yum update
+RUN yum clean all
 
-RUN apt-get install -y python3 
-RUN apt install -y python3-pip 
-RUN apt  install fontconfig openjdk-17-jre 
-RUN apt install git
-RUN apt-get update
+RUN yum install -y python3 
+RUN yum install -y python3-pip 
+RUN yum  install fontconfig openjdk-17-jre 
+RUN yum install git
+RUN yum update
