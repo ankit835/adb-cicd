@@ -8,5 +8,5 @@ RUN yum clean all
 
 RUN yum install -y python3 
 RUN yum install -y python3-pip  
-RUN yum install git
-RUN yum update
+RUN yum install git -y
+RUN yum update -y
