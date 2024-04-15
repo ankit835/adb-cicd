@@ -12,21 +12,31 @@ agent { dockerfile true }
                 git branch: 'main', url: 'https://github.com/ankit835/adb-cicd.git'
             }
         }
-        stage('Build') {
-            steps {
-                // Execute build commands
-                echo 'Building & installing databricks' // Example for Node.js project
-                // withEnv(['ADB_HOME=/var/lib/jenkins/.local/bin'])
-                sh 'pip install databricks-cli'
+        // stage('Build') {
+        //     steps {
+        //         // Execute build commands
+        //         echo 'Building & installing databricks' // Example for Node.js project
+        //         // withEnv(['ADB_HOME=/var/lib/jenkins/.local/bin'])
+        //         sh 'pip install databricks-cli'
 
-                // Configure databricks
+        //         // Configure databricks
+        //             sh '''
+                        
+        //                 echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  ${ADB_HOME}/databricks configure --token"
+                        
+        //             ''' 
+        //     }
+        // }
+        stage ('build'){
+                 steps{          
+                     // Configure databricks
                     sh '''
                         
-                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  ${ADB_HOME}/databricks configure --token"
+                        echo "${DATABRICKS_HOST}\n${DATABRICKS_TOKEN}' |  databricks configure --token"
                         
                     ''' 
-            }
-        }
+        } 
+    }
         stage('deploy') {
              when {
                 // Define conditions for deployment, e.g., branch name
