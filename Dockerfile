@@ -8,6 +8,6 @@ RUN yum clean all
 
 RUN yum install -y python3 
 RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-RUN python get-pip.py  
+RUN python get-pip.py -y 
 RUN yum install git -y
 RUN yum update -y
