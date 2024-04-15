@@ -7,6 +7,6 @@ RUN yum update -y
 RUN yum clean all
 
 RUN yum install -y python3 
-RUN yum -y install python-pip  
+RUN yum -y install --enablerepo="epel" python-pip && yum clean all  
 RUN yum install git -y
 RUN yum update -y
