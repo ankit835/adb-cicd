@@ -48,23 +48,23 @@ agent { dockerfile true }
                     sh '''
                         DDL_FOLDER=/Workspace/Shared/DDL
                         echo $DDL_FOLDER
-                        ${ADB_HOME}/databricks workspace import_dir DDL $DDL_FOLDER --exclude-hidden-files --overwrite
+                        databricks workspace import_dir DDL $DDL_FOLDER --exclude-hidden-files --overwrite
                     '''
                 // DML deployment
                     sh '''
                         DML_FOLDER=/Workspace/Users/ankit.singh01@tigeranalytics.com/DML
                         echo $DML_FOLDER
-                        ${ADB_HOME}/databricks workspace import_dir DML $DML_FOLDER --exclude-hidden-files --overwrite
+                        databricks workspace import_dir DML $DML_FOLDER --exclude-hidden-files --overwrite
                     '''
             }
         }
     }
     
-    // Optionally, you can define post-build actions
-    // post {
-    //     always {
-    //         echo "deployment completed..!!"
-    //     }
-    // }
-    // +refs/heads/*:refs/remotes/origin/*
+
+    post {
+        always {
+            echo "deployment completed..!!"
+        }
+    }
+    +refs/heads/*:refs/remotes/origin/*
 }
