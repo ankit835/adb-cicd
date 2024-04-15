@@ -1,4 +1,4 @@
-FROM ununtu:latest
+FROM ubuntu:latest
 
 RUN apt update -y
 RUN apt clean
