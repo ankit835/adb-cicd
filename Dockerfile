@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+RUN timedatectl set-local-rtc 0
 
 RUN apt-get -y update
 
