@@ -7,7 +7,7 @@ RUN yum update -y
 RUN yum clean all
 
 RUN yum install -y python3 
-RUN yum -y --enablerepo=extras install epel-release && yum clean all
-RUN dnf -y install python-pip  
+RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+RUN python get-pip.py  
 RUN yum install git -y
 RUN yum update -y
