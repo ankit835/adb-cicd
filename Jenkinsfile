@@ -1,8 +1,8 @@
 pipeline {
 agent { dockerfile true }
     environment{ 
-            DATABRICKS_TOKEN_TEST= credentials('adb-token')
-      		DATABRICKS_TOKEN_QA= credentials('adb-token')
+            DATABRICKS_TOKEN_TEST= credentials('adb-token1')
+      		DATABRICKS_TOKEN_QA= credentials('adb-token1')
             }
     
     stages {
