@@ -14,7 +14,7 @@ agent { dockerfile true }
                      // Configure databricks
                     sh '''
                         
-                        echo "${DATABRICKS_HOST_TEST}\n${DATABRICKS_TOKEN_TEST}' |  databricks configure --token"
+                        echo "${DATABRICKS_HOST_TEST}\n${DATABRICKS_TOKEN_TEST}' |  databricks configure --token --profile test"
                         
                     ''' 
         } 
