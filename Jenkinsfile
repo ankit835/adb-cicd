@@ -28,15 +28,14 @@ agent { dockerfile true }
         stage('deploy') {
 
          when { branch 'test' }
-                 steps{          
-                     // Configure databricks
+
+            steps {  
+
                     sh '''
                         
                         echo "${DATABRICKS_HOST_TEST}\n${DATABRICKS_TOKEN_TEST}' |  databricks configure --token --profile test"
                         
                     ''' 
-        } 
-            steps {    
 
                 // DDL deployment
                      sh '''
