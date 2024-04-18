@@ -5,12 +5,11 @@ agent { dockerfile true }
       		DATABRICKS_TOKEN_QA= credentials('adb-token1')
             }
     
-    // stages {
+    stages {
           
-    //     stage ('build-prerequsities-test'){
+        // stage ('build-prerequsities-test'){
           
-          
-    // }
+        // }
       
       stage('build-prerequsities-QA'){
         when {
@@ -54,11 +53,12 @@ agent { dockerfile true }
             }
         }
     }
+}
     
 
-    post {
-        always {
-            echo "Pipeline execution completed..!!"
-        }
-    }
+    // post {
+    //     always {
+    //         echo "Pipeline execution completed..!!"
+    //     }
+    // }
 
