@@ -5,21 +5,12 @@ agent { dockerfile true }
       		DATABRICKS_TOKEN_QA= credentials('adb-token1')
             }
     
-    stages {
+    // stages {
           
-        stage ('build-prerequsities-test'){
+    //     stage ('build-prerequsities-test'){
           
-          			when { branch 'test' }
-                 steps{          
-                     // Configure databricks
-                    sh '''
-                        
-                        echo "${DATABRICKS_HOST_TEST}\n${DATABRICKS_TOKEN_TEST}' |  databricks configure --token --profile test"
-                        
-                    ''' 
-        } 
           
-    }
+    // }
       
       stage('build-prerequsities-QA'){
         when {
@@ -36,10 +27,16 @@ agent { dockerfile true }
         } }
       
         stage('deploy') {
-//             when {
-                // Define conditions for deployment, e.g., branch name
-//                branch 'main'
-//            }
+
+         when { branch 'test' }
+                 steps{          
+                     // Configure databricks
+                    sh '''
+                        
+                        echo "${DATABRICKS_HOST_TEST}\n${DATABRICKS_TOKEN_TEST}' |  databricks configure --token --profile test"
+                        
+                    ''' 
+        } 
             steps {    
 
                 // DDL deployment
